@@ -65,3 +65,85 @@ echo "---- Installing Krita ----"
 
 dnf install krita -y
 
+# cron
+echo "---- Installing Cron ----"
+
+dnf install cronie -y
+
+# syncthing
+echo "---- Installing Syncthing ----"
+
+dnf install syncthing -y
+
+echo "---- Setting up Syncthing ----"
+
+crontab -l > crontmp
+echo "@reboot syncthing&" >> crontmp
+crontab crontmp
+rm crontmp
+
+# dev tools
+echo "---- Instaling DevTools ----"
+
+dnf groupinstall 'Development Tools' -y
+
+# Copr
+echo "---- Enabling Copr ----"
+
+dnf install dnf-plugins-core -y
+
+# kicad nightly
+echo "---- Installing KiCAD Nightly ----"
+
+dnf copr enable @kicad/kicad
+dnf install kicad-nightly -y
+dnf install kicad-nightly-packages3d -y
+
+# freecad
+echo "---- Installing FreeCAD ----"
+
+dnf install freecad -y
+
+# rpi-imager
+echo "---- Installing Rpi-Imager ----"
+
+dnf install rpi-imager -y
+
+# wine 
+echo "---- Installing WINE ----"
+
+dnf install wine winetricks -y
+
+# steam
+echo "---- Installing Steam ----"
+
+dnf install steam -y
+
+# lutris
+echo "---- Installing Lutris ----"
+
+dnf install lutris -y
+
+# onenote
+echo "---- Installing OneNote ----"
+
+snap install onenote-desktop
+
+# virtualization
+echo "---- Installing Virtualization ----"
+
+dnf install @virtualization
+systemctl start libvirtd
+systemctl enable libvirtd
+
+# java
+echo "---- Installing JAVA DevTools ----"
+
+dnf group install "Java Development"
+
+# docker
+echo "---- Installing Docker ----"
+
+dnf install docker -y
+dnf install docker-compose -y
+
