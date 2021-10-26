@@ -77,10 +77,8 @@ dnf install syncthing -y
 
 echo "---- Setting up Syncthing ----"
 
-crontab -l > crontmp
-echo "@reboot syncthing&" >> crontmp
-crontab crontmp
-rm crontmp
+systemctl --user enable syncthing.service
+systemctl --user start syncthing.service
 
 # dev tools
 echo "---- Instaling DevTools ----"
@@ -95,7 +93,7 @@ dnf install dnf-plugins-core -y
 # kicad nightly
 echo "---- Installing KiCAD Nightly ----"
 
-dnf copr enable @kicad/kicad
+dnf copr enable @kicad/kicad -y
 dnf install kicad-nightly -y
 dnf install kicad-nightly-packages3d -y
 
@@ -132,14 +130,14 @@ snap install onenote-desktop
 # virtualization
 echo "---- Installing Virtualization ----"
 
-dnf install @virtualization
+dnf install @virtualization -y
 systemctl start libvirtd
 systemctl enable libvirtd
 
 # java
 echo "---- Installing JAVA DevTools ----"
 
-dnf group install "Java Development"
+dnf group install "Java Development" -y
 
 # docker
 echo "---- Installing Docker ----"
@@ -147,3 +145,18 @@ echo "---- Installing Docker ----"
 dnf install docker -y
 dnf install docker-compose -y
 
+# kde-connect
+echo "---- Installing KDE Connect ----"
+
+dnf install kde-connect -y
+
+# C# devtools
+echo "---- Installing C# DevTools ----"
+
+dnf install dotnet -y
+dnf install mono-devel -y
+
+# monodevelop
+echo "---- Installing MonoDevelop ----"
+
+dnf install monodevelop -y
