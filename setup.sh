@@ -34,11 +34,11 @@ echo "---- Installing Discord ----"
 
 snap install discord
 
-# xournal
-echo "---- Installing Xournal ----"
+# xournalpp
+echo "---- Installing Xournalpp ----"
 
 
-dnf install xournal -y
+snap install xournalpp
 
 # ssh
 
@@ -160,3 +160,17 @@ dnf install mono-devel -y
 echo "---- Installing MonoDevelop ----"
 
 dnf install monodevelop -y
+
+# tweaks
+echo "---- Installing Gnome Tweaks ----"
+
+dnf install gnome-tweaks -y
+
+# orchis theme
+echo "---- Downloading Orchis theme ----"
+
+git clone https://github.com/vinceliuice/Orchis-theme.git
+cd Orchis-theme
+./install.sh
+cd ..
+rm -rf ./Orchis-theme
