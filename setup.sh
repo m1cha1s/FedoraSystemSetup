@@ -176,6 +176,6 @@ cd ..
 rm -rf ./Orchis-theme
 
 # geary
-echo "---- Installing Geary ----"
+echo "---- Instlling Geary ----"
 
 dnf install geary -y
